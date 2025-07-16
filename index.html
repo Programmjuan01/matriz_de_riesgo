@@ -132,7 +132,14 @@
   </div>
 
 </div>
-
+<script>
+/* Si estamos en un iframe (Power Apps) sobre‑escribimos el viewport */
+if (window !== window.parent) {
+  const vp = document.getElementById('vp');
+  // 1280 activa el breakpoint lg de Bootstrap (≥ 992 px)
+  vp.setAttribute('content', 'width=1280, initial-scale=1');
+}
+</script>
 <!-- Bootstrap bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- SheetJS + FileSaver para exportar Excel -->
