@@ -1,12 +1,5 @@
 /*  ========================  main.js  ========================  */
 
-/* Si estoy dentro de un iframe (Power Apps) fuerzo un viewport ancho */
-if (window !== window.parent) {
-  const vp = document.getElementById('vp');
-  // 1280px hace que Bootstrap active breakpoint lg (≥992 px)
-  vp.setAttribute('content', 'width=1280, initial-scale=1');
-}
-
 /* ---------- 1.  Catálogos y utilidades ---------- */
 const NIVELES_PROB = [
   ["Raro/Incierto", 1], ["Poco probable", 2], ["Medianamente", 3],
