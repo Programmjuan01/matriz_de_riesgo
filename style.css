@@ -105,3 +105,11 @@ td[data-impact="muy-bajo"]{
   .btn{width:100%;}
   .table-responsive{margin-bottom:1rem;}
 }
+/* Evita que Bootstrap limite el contenedor */
+body{
+  min-width: 1024px;        /* cualquier valor > 992 px */
+}
+.container,
+.container-fluid{
+  max-width: 100%!important;  /* anula el max‑width por breakpoints */
+}
