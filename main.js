@@ -36,7 +36,6 @@ const form        = document.getElementById("form-riesgo");
 const tbody       = document.getElementById("tabla-body");
 const btnClear    = document.getElementById("btn-clear");
 const btnDownload = document.getElementById("dl-btn");
-
 /* ---------- 4.  Render de la tabla ---------- */
 function renderTable(){
   tbody.innerHTML = "";
