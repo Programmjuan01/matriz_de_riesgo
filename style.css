@@ -70,7 +70,6 @@ label.form-label{color:var(--clr-muted);font-weight:600;letter-spacing:.2px;}
 .table tbody td{color:var(--clr-text);}
 .table-bordered>:not(caption)>*>*{border-color:#2b2b2b;}
 .table-sm>:not(caption)>*>*{padding:.45rem .6rem;}
-/* Zebra & hover */
 .table-striped>tbody>tr:nth-of-type(odd){background:#181818;}
 .table-hover>tbody>tr:hover{background:rgba(192,0,0,.12);}
 /* Scrollbar fino */
@@ -95,66 +94,59 @@ label.form-label{color:var(--clr-muted);font-weight:600;letter-spacing:.2px;}
 /*────────────────────────────
   Tweaks responsive ≤ 576 px
 ─────────────────────────────*/
-@media (max-width: 576px){
+@media (max-width:576px){
+  /* 1.  El body sigue midiendo 100 vh pero ahora el contenedor
+         puede deslizarse verticalmente */
   html,body{height:100%;}
   .container-fluid{
     padding:.75rem;
     height:100%;
+    overflow-y:auto;         /* << permite scroll GLOBAL */
     display:flex;
     flex-direction:column;
   }
-  .form-card {flex:0 0 auto;}     /* no crece */
-  .table-card{flex:1 1 auto;}     /* ocupa el resto */
+
+  /* 2.  Formulario + tabla en columna */
+  .form-card {flex:0 0 auto;}
+  .table-card{flex:1 1 auto;}
+
+  /* 3.  Tabla: scroll vertical y horizontal interno */
   .table-card .card-body{
     padding:0;
     overflow-y:auto;
+    overflow-x:auto;
     max-height:55vh;
   }
-  @media (max-width: 576px){
-  /* ... resto sin cambios ... */
 
-  /* extra: scroll horizontal si hiciera falta */
-  .table-card .card-body{
-    padding:0;
-    overflow-y:auto;   /* vertical */
-    overflow-x:auto;   /* horizontal */
-    max-height:55vh;
-  }
-}
-
+  /* 4.  Botones apilados */
   .botones-footer{
     flex-direction:column;
     gap:.5rem;
   }
   .botones-footer .btn{width:100%;}
+
+  /* 5.  Texto compacto */
   .btn,.form-control,.form-select{font-size:.85rem;}
 }
 
 /*────────────────────────────
   Extra‑compacto ≤ 420 px
 ─────────────────────────────*/
-@media (max-width: 420px){
-  .table-card .card-body{max-height:60vh;}
-
-  /* Las únicas 2 columnas visibles ya son compactas;
-     ajustamos ancho mínimo por si hay palabras largas */
-  .table th,
-  .table td{
-    min-width:70px;
+@media (max-width:420px){
+  .table-card .card-body{
+    max-height:60vh;
+    overflow-x:auto;         /* refuerzo */
+  }
+  /* Ajuste de celdas para palabras largas */
+  .table th, .table td{
+    min-width:80px;
     word-break:break-word;
   }
 
-  @media (max-width: 420px){
-  .table-card .card-body{
-    max-height:60vh;
-    overflow-x:auto;   /* nuevo */
-  }
-  /* ... resto sin cambios ... */
-}
-  /* ===== Botones siempre visibles en móviles ===== */
+  /* Botones siempre visibles en el borde inferior */
   .botones-footer{
-    margin-top:auto;          /* empuja al fondo del flex‑layout   */
-    position:sticky;          /* se “pega” al bottom al hacer scroll */
+    margin-top:auto;
+    position:sticky;
     bottom:0;
     background:var(--clr-bg);
     padding:.5rem .75rem;
