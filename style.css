@@ -64,7 +64,7 @@ label.form-label{color:var(--clr-muted);font-weight:600;letter-spacing:.2px;}
   background:#151515;
   color:#fff;
   font-weight:600;
-  border-color:#2b2b2b;
+  border-color:rgb(223, 5, 5);
 }
 .table tbody td{                   /* <= asegúrate de que el texto sea visible */
   color:var(--clr-text);
@@ -104,52 +104,4 @@ td[data-impact="muy-bajo"]{
   h1{font-size:clamp(1.4rem,4vw,1.9rem);}
   .btn{width:100%;}
   .table-responsive{margin-bottom:1rem;}
-}
-/* añadido */
-/*────────────────────────────
-  Vista ultra‑compacta  ≤ 500 × 420
-─────────────────────────────*/
-@media (max-width:500px) and (max-height:420px){
-  html,body{
-    height:100%;
-    overflow:hidden;            /* evitamos dos scrollbars */
-    font-size:0.85rem;          /* texto ligeramente menor */
-  }
-
-  /* contenedor principal en columna */
-  .container-fluid{
-    display:flex;
-    flex-direction:column;
-    height:100%;                /* ocupa todo el alto del iframe */
-    padding:0.75rem;            /* un poco menos de margen */
-  }
-
-  /* formulario (primera tarjeta)      */
-  .card.form-card{
-    flex:0 0 auto;              /* no crece */
-    max-height:45%;             /* ocupa ~45 % del alto y… */
-    overflow:auto;              /* …scrollea si se desborda */
-    margin-bottom:.5rem;
-  }
-
-  /* tabla (segunda tarjeta)           */
-  .card.table-card{
-    flex:1 1 auto;              /* se expande y llena hueco */
-    min-height:0;               /* imprescindible p/scroll hijo */
-  }
-  .card.table-card .table-responsive{
-    max-height:100%;
-    overflow:auto;              /* scroll vertical interno */
-  }
-
-  /* botones inferiores                */
-  .botones-footer{
-    flex:0 0 auto;              /* se quedan abajo */
-    margin-top:auto;
-  }
-
-  /* botones y campos un poco más compactos */
-  .btn{padding:.375rem .75rem;font-size:.75rem;}
-  .form-control,.form-select{padding:.35rem .6rem;font-size:.75rem;}
-  th,td{white-space:nowrap;}    /* evita saltos raros en la tabla */
 }
