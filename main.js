@@ -93,8 +93,18 @@ form.addEventListener("submit",e=>{
 /* … idéntico al que ya tienes … */
 
 /* ---------- 7.  Botones ---------- */
-btnClear.onclick = ()=>{ if(confirm("¿Borrar toda la matriz?")){rows=[];persist();renderTable();}};
-btnUpload.onclick = uploadExcel;
+btnClear.onclick   = ()=>{ if(confirm("¿Borrar toda la matriz?")){rows=[];persist();renderTable();}};
+btnUpload.onclick  = uploadExcel;
+
+/* ===== Botones MÓVIL ===== */
+document.getElementById("btn-save-xs")
+        .addEventListener("click", ()=>form.requestSubmit());
+
+document.getElementById("btn-clear-xs")
+        .addEventListener("click", btnClear.onclick);
+
+document.getElementById("dl-btn-xs")
+        .addEventListener("click", uploadExcel);
 
 /* ---------- 8.  Init ---------- */
 renderTable();

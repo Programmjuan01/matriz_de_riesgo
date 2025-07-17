@@ -90,6 +90,10 @@ label.form-label{color:var(--clr-muted);font-weight:600;letter-spacing:.2px;}
   .btn{width:100%;}
   .table-responsive{margin-bottom:1rem;}
 }
+/* … contenido anterior intacto … */
+
+/* Botones grupo móvil */
+.mobile-actions .btn{min-width:0;}      /* permite que los tres quepan en línea */
 
 /*────────────────────────────
   Tweaks responsive ≤ 576 px
