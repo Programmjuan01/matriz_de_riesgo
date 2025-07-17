@@ -93,44 +93,33 @@ label.form-label{color:var(--clr-muted);font-weight:600;letter-spacing:.2px;}
 /* … contenido anterior intacto … */
 
 /* Botones grupo móvil */
-.mobile-actions .btn{min-width:0;}      /* permite que los tres quepan en línea */
+.mobile-actions .btn{min-width:0;font-size:.82rem;}
 
 /*────────────────────────────
   Tweaks responsive ≤ 576 px
 ─────────────────────────────*/
+/*-----------------------------  BREAKPOINT ≤ 576 px  ----------------------------*/
 @media (max-width:576px){
-  /* 1.  El body sigue midiendo 100 vh pero ahora el contenedor
-         puede deslizarse verticalmente */
   html,body{height:100%;}
   .container-fluid{
     padding:.75rem;
     height:100%;
-    overflow-y:auto;         /* << permite scroll GLOBAL */
+    overflow-y:auto;            /* scroll global */
     display:flex;
     flex-direction:column;
-  }
-
-  /* 2.  Formulario + tabla en columna */
+    }
   .form-card {flex:0 0 auto;}
   .table-card{flex:1 1 auto;}
 
-  /* 3.  Tabla: scroll vertical y horizontal interno */
   .table-card .card-body{
     padding:0;
-    overflow-y:auto;
+    overflow-y:auto;            /* scroll interno */
     overflow-x:auto;
     max-height:55vh;
   }
 
-  /* 4.  Botones apilados */
-  .botones-footer{
-    flex-direction:column;
-    gap:.5rem;
-  }
-  .botones-footer .btn{width:100%;}
-
-  /* 5.  Texto compacto */
-  .btn,.form-control,.form-select{font-size:.85rem;}
+  /* oculta la barra footer y usa los botones del form */
+  .botones-footer{display:none;}
 }
 
 /*────────────────────────────

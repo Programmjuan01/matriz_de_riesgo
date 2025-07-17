@@ -106,5 +106,25 @@ document.getElementById("btn-clear-xs")
 document.getElementById("dl-btn-xs")
         .addEventListener("click", uploadExcel);
 
+/* … todo tu código (MSAL, calcRiesgo, render, etc.) sigue igual … */
+
+/* ----------  Acciones desktop  ---------- */
+document.getElementById("btn-save")  ?.addEventListener("click", ()=>form.requestSubmit());
+document.getElementById("btn-clear") ?.addEventListener("click", limpiarMatriz);
+document.getElementById("btn-upload")?.addEventListener("click", uploadExcel);
+
+/* ----------  Acciones móvil  ---------- */
+document.getElementById("btn-save-xs") ?.addEventListener("click", ()=>form.requestSubmit());
+document.getElementById("btn-clear-xs")?.addEventListener("click", limpiarMatriz);
+document.getElementById("btn-upload-xs")?.addEventListener("click", uploadExcel);
+
+/* ----------  Helpers ---------- */
+function limpiarMatriz(){
+  if(confirm("¿Borrar toda la matriz?")){
+    rows=[]; persist(); renderTable();
+  }
+}
+
+
 /* ---------- 8.  Init ---------- */
 renderTable();
