@@ -110,6 +110,18 @@ label.form-label{color:var(--clr-muted);font-weight:600;letter-spacing:.2px;}
     overflow-y:auto;
     max-height:55vh;
   }
+  @media (max-width: 576px){
+  /* ... resto sin cambios ... */
+
+  /* extra: scroll horizontal si hiciera falta */
+  .table-card .card-body{
+    padding:0;
+    overflow-y:auto;   /* vertical */
+    overflow-x:auto;   /* horizontal */
+    max-height:55vh;
+  }
+}
+
   .botones-footer{
     flex-direction:column;
     gap:.5rem;
@@ -132,6 +144,13 @@ label.form-label{color:var(--clr-muted);font-weight:600;letter-spacing:.2px;}
     word-break:break-word;
   }
 
+  @media (max-width: 420px){
+  .table-card .card-body{
+    max-height:60vh;
+    overflow-x:auto;   /* nuevo */
+  }
+  /* ... resto sin cambios ... */
+}
   /* ===== Botones siempre visibles en móviles ===== */
   .botones-footer{
     margin-top:auto;          /* empuja al fondo del flex‑layout   */
