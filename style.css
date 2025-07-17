@@ -131,3 +131,29 @@ td[data-impact="muy-bajo"]{
   .form-select          { font-size: .85rem; }        /* texto legible pero compacto */
   h1                    { font-size: 1.25rem; }
 }
+/*────────────────────────────
+  Extra‑compacto ≤ 420 px
+─────────────────────────────*/
+@media (max-width: 420px) {
+  /* A) la tabla ocupa todo el alto que quede */
+  .table-card .card-body{
+    max-height: 60vh;          /* un poco más alto porque quitarás columnas */
+  }
+
+  /* B) Oculta columnas menos críticas       */
+  /* → se eligen las de texto largo que más “ensancharon” */
+  /*   (Macroproyecto, Descripción y Grupo CAPEX)          */
+  thead th:nth-child(2),
+  tbody  td:nth-child(2),      /* Macroproyecto  */
+  thead th:nth-child(3),
+  tbody  td:nth-child(3),      /* Descripción    */
+  thead th:nth-child(5),
+  tbody  td:nth-child(5)       /* Grupo CAPEX    */
+  { display:none; }
+
+  /* C) Ajusta ancho mínimo de las celdas visibles */
+  .table th, .table td{
+    min-width: 70px;
+    word-break: break-word;
+  }
+}

@@ -1,4 +1,8 @@
 /*  ========================  main.js  ========================  */
+document.querySelector('[name="id_riesgo"]')
+        .addEventListener('input', e => {
+  e.target.value = e.target.value.replace(/\D/g,'');   // limpia todo lo no numérico
+});
 
 /* ---------- 1.  Catálogos y utilidades ---------- */
 const NIVELES_PROB = [
