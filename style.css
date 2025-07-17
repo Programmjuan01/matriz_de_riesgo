@@ -1,13 +1,119 @@
 /*────────────────────────────
+  Paleta y variables globales
+─────────────────────────────*/
+:root{
+  --clr-bg:#0d0d0d;
+  --clr-surface:#111111;
+  --clr-primary:#C00000;
+  --clr-primary-l:#e00000;
+  --clr-text:#f2f2f2;
+  --clr-muted:#9a9a9a;
+  --radius:1rem;
+  --transition:all .25s ease;
+}
+
+/*────────────────────────────
+  Layout base
+─────────────────────────────*/
+body{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  background:var(--clr-bg);
+  color:var(--clr-text);
+  min-height:100vh;
+}
+h1{color:var(--clr-primary);font-weight:700;}
+
+/*────────────────────────────
+  Cards
+─────────────────────────────*/
+.card{
+  background:var(--clr-surface);
+  border:none;
+  border-radius:var(--radius);
+  box-shadow:0 4px 14px rgba(0,0,0,.6);
+  transition:var(--transition);
+}
+.card:hover{box-shadow:0 6px 22px rgba(192,0,0,.35);}
+
+/*────────────────────────────
+  Formulario
+─────────────────────────────*/
+label.form-label{color:var(--clr-muted);font-weight:600;letter-spacing:.2px;}
+.form-control,.form-select{
+  background:#1a1a1a;border:1px solid #333;border-radius:.5rem;color:var(--clr-text);
+}
+.form-control:focus,.form-select:focus{
+  border-color:var(--clr-primary);
+  box-shadow:0 0 0 .25rem rgba(192,0,0,.25);
+  background:#141414;color:var(--clr-text);
+}
+
+/*────────────────────────────
+  Botones
+─────────────────────────────*/
+.btn-primary{background:var(--clr-primary);border:none;box-shadow:0 0 8px rgba(192,0,0,.55);}
+.btn-primary:hover{background:var(--clr-primary-l);box-shadow:0 0 12px rgba(192,0,0,.9);}
+.btn-success{background:#1e1e1e;border:1px solid var(--clr-primary);color:var(--clr-text);box-shadow:0 0 6px rgba(192,0,0,.4);}
+.btn-success:hover{background:var(--clr-primary);color:#fff;}
+.btn-outline-danger{border:1px solid var(--clr-primary);color:var(--clr-primary);}
+.btn-outline-danger:hover{background:var(--clr-primary);color:#fff;}
+
+/*────────────────────────────
+  Tabla — look profesional
+─────────────────────────────*/
+.table thead th{
+  background:#151515;
+  color:#fff;
+  font-weight:600;
+  border-color:rgb(223, 5, 5);
+}
+.table tbody td{color:var(--clr-text);}
+.table-bordered>:not(caption)>*>*{border-color:#2b2b2b;}
+.table-sm>:not(caption)>*>*{padding:.45rem .6rem;}
+/* Zebra & hover */
+.table-striped>tbody>tr:nth-of-type(odd){background:#181818;}
+.table-hover>tbody>tr:hover{background:rgba(192,0,0,.12);}
+/* Scrollbar fino */
+.table-responsive{scrollbar-width:thin;}
+.table-responsive::-webkit-scrollbar{height:8px;}
+.table-responsive::-webkit-scrollbar-thumb{background:#444;border-radius:4px;}
+
+/*────────────────────────────
+  Neon utilitario
+─────────────────────────────*/
+.neon{text-shadow:0 0 6px #C00000,0 0 12px #C00000,0 0 24px #C00000;}
+
+/*────────────────────────────
+  Responsive genérico ≤ 768 px
+─────────────────────────────*/
+@media(max-width:768px){
+  h1{font-size:clamp(1.4rem,4vw,1.9rem);}
+  .btn{width:100%;}
+  .table-responsive{margin-bottom:1rem;}
+}
+
+/*────────────────────────────
   Tweaks responsive ≤ 576 px
 ─────────────────────────────*/
 @media (max-width: 576px){
   html,body{height:100%;}
-  .container-fluid{padding:.75rem;height:100%;display:flex;flex-direction:column;}
-  .form-card{flex:0 0 auto;}
-  .table-card{flex:1 1 auto;}
-  .table-card .card-body{padding:0;overflow-y:auto;max-height:55vh;}
-  .botones-footer{flex-direction:column;gap:.5rem;}
+  .container-fluid{
+    padding:.75rem;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+  }
+  .form-card {flex:0 0 auto;}     /* no crece */
+  .table-card{flex:1 1 auto;}     /* ocupa el resto */
+  .table-card .card-body{
+    padding:0;
+    overflow-y:auto;
+    max-height:55vh;
+  }
+  .botones-footer{
+    flex-direction:column;
+    gap:.5rem;
+  }
   .botones-footer .btn{width:100%;}
   .btn,.form-control,.form-select{font-size:.85rem;}
 }
@@ -17,5 +123,23 @@
 ─────────────────────────────*/
 @media (max-width: 420px){
   .table-card .card-body{max-height:60vh;}
-  /* nada que ocultar: la tabla ya solo tiene 2 columnas :) */
+
+  /* Las únicas 2 columnas visibles ya son compactas;
+     ajustamos ancho mínimo por si hay palabras largas */
+  .table th,
+  .table td{
+    min-width:70px;
+    word-break:break-word;
+  }
+
+  /* ===== Botones siempre visibles en móviles ===== */
+  .botones-footer{
+    margin-top:auto;          /* empuja al fondo del flex‑layout   */
+    position:sticky;          /* se “pega” al bottom al hacer scroll */
+    bottom:0;
+    background:var(--clr-bg);
+    padding:.5rem .75rem;
+    box-shadow:0 -2px 8px rgba(0,0,0,.45);
+    z-index:1000;
+  }
 }
