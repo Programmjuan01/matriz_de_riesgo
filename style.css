@@ -1,32 +1,75 @@
-/* …  tu paleta, tablas y botones sin cambios … */
-
-/* Botones fila móvil */
-.mobile-actions .btn{min-width:0;font-size:.82rem;}
-
-/* -------------  ≤ 576 px ------------- */
-@media (max-width:576px){
-  html,body{height:100%;}
-  .container-fluid{
-    padding:.75rem;
-    height:100%;
-    overflow-y:auto;         /* scroll global */
-    display:flex;
-    flex-direction:column;
-  }
-  .form-card {flex:0 0 auto;}
-  .table-card{flex:1 1 auto;}
-
-  .table-card .card-body{
-    padding:0;
-    overflow:auto;
-    max-height:55vh;
-  }
-
-  .botones-footer{display:none;}        /* oculta footer y usamos botones móviles */
+/* ==== variables === */
+:root{
+  --red:#c00000;
+  --bg:#0d0d0d;
+  --surface:#111;
+  --txt:#f2f2f2;
+  --muted:#999;
 }
 
-/* -------------  ≤ 420 px ------------- */
-@media (max-width:420px){
-  .table-card .card-body{max-height:60vh;}
-  .table th,.table td{min-width:80px;word-break:break-word;}
+/* ==== reset rápido ==== */
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",sans-serif}
+
+/* ==== contenedor principal ==== */
+body{background:var(--bg);color:var(--txt);}
+.wrapper{max-width:380px;margin:auto;padding:1rem 0;}
+
+/* ==== tarjeta ==== */
+.card{
+  background:var(--surface);
+  padding:1rem;
+  border-radius:1.2rem;
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+}
+
+/* ==== títulos de campo ==== */
+.card h2{
+  background:var(--red);
+  text-align:center;
+  font-size:.9rem;
+  padding:.35rem 0;
+  border-radius:.25rem;
+}
+
+/* ==== inputs / selects ==== */
+.card input,
+.card select{
+  width:100%;
+  padding:.55rem .9rem;
+  border:none;
+  border-radius:1.8rem;
+  background:#5555;
+  color:var(--txt);
+  font-size:.82rem;
+}
+.card select{cursor:pointer;}
+.card input::placeholder{color:var(--muted);}
+
+/* ==== grid de 2 columnas en desktop ==== */
+.grid-2{display:grid;gap:.75rem;}
+@media(min-width:576px){.grid-2{grid-template-columns:repeat(2,1fr);}}
+
+/* ==== botones ==== */
+.btn{
+  border:none;padding:.65rem 1.2rem;border-radius:2rem;font-weight:600;
+  cursor:pointer;transition:.2s;
+}
+.primary{background:var(--red);color:#fff;}
+.primary:hover{filter:brightness(1.1);}
+.outline{background:transparent;border:2px solid var(--red);}
+.outline:hover{background:var(--red);color:#fff;}
+.btn-row{display:flex;gap:.5rem;flex-wrap:wrap;}
+
+/* ==== tabla ==== */
+.table-wrap{margin-top:1rem;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;}
+th,td{text-align:center;padding:.5rem .25rem;font-size:.78rem;}
+thead th{background:var(--red);}
+tbody td{background:#ffd8d8;color:#000;}
+tbody tr:nth-child(even) td{background:#fbecec;}
+tbody button{
+  background:var(--red);color:#fff;border:none;border-radius:.25rem;padding:.25rem .5rem;
+  cursor:pointer;font-size:.7rem;
 }
