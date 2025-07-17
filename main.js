@@ -37,3 +37,21 @@ document.getElementById("btn-excel").onclick=()=>{
   a.download="matriz_riesgos.json";
   a.click();
 };
+// ... tu código previo de MSAL, calcRiesgo, renderTable, etc. ...
+
+/* Helpers */
+function limpiarMatriz(){
+  if(confirm("¿Borrar toda la matriz?")){
+    rows=[]; persist(); renderTable();
+  }
+}
+
+/* Desktop */
+document.getElementById("btn-save")  ?.addEventListener("click", ()=>frm.requestSubmit());
+document.getElementById("btn-clear") ?.addEventListener("click", limpiarMatriz);
+document.getElementById("btn-upload")?.addEventListener("click", uploadExcel);
+
+/* Móvil */
+document.getElementById("btn-save-xs")  ?.addEventListener("click", ()=>frm.requestSubmit());
+document.getElementById("btn-clear-xs") ?.addEventListener("click", limpiarMatriz);
+document.getElementById("btn-upload-xs")?.addEventListener("click", uploadExcel);
